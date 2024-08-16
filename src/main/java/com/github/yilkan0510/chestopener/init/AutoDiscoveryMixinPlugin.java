@@ -1,4 +1,4 @@
-package com.github.yilkan0510.autochestopener.init;
+package com.github.yilkan0510.chestopener.init;
 
 import org.spongepowered.asm.lib.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;

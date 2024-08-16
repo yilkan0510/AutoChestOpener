@@ -1,15 +1,11 @@
 [
   {
-    "modid": "${modid}",
-    "name": "Xample Mod",
-    "description": "A mod that is used as an example.",
-    "version": "${version}",
-    "mcversion": "${mcversion}",
-    "url": "https://github.com/romangraef/Forge1.8.9Template/",
-    "updateUrl": "",
-    "authorList": [
-      "You"
-    ],
+    "modid": "chestopener",
+    "name": "Chest Opener Mod",
+    "description": "Automatically opens chests when you look at them.",
+    "version": "1.0",
+    "mcversion": "1.8.9",
+    "authorList": ["Yilmaz"],
     "credits": "",
     "logoFile": "",
     "screenshots": [],

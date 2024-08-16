@@ -1,4 +1,4 @@
-package com.github.yilkan0510.autochestopener.mixin;
+package com.github.yilkan0510.chestopener.mixin;
 
 import net.minecraft.client.gui.GuiMainMenu;
 import org.spongepowered.asm.mixin.Mixin;
