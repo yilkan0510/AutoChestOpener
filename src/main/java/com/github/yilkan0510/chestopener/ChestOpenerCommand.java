@@ -2,6 +2,7 @@ package com.github.yilkan0510.chestopener;
 
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChatComponentText;
 
 public class ChestOpenerCommand extends CommandBase {
@@ -30,5 +31,10 @@ public class ChestOpenerCommand extends CommandBase {
     @Override
     public int getRequiredPermissionLevel() {
         return 0; // Allows any player to use the command
+    }
+
+    @Override
+    public boolean canCommandSenderUseCommand(ICommandSender sender) {
+        return true; // Always allow the command to be executed
     }
 }

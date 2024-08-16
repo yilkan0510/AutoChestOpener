@@ -18,6 +18,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.ClientTickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraft.util.EnumChatFormatting;
 
 @Mod(modid = ChestOpenerMod.MODID, version = ChestOpenerMod.VERSION)
 public class ChestOpenerMod {
@@ -25,6 +26,7 @@ public class ChestOpenerMod {
     public static final String MODID = "chestopener";
     public static final String VERSION = "1.0";
     private boolean autoChestOpenEnabled = false;
+    private boolean cooldownChest = false;
     private final Minecraft mc = Minecraft.getMinecraft();
 
     @Mod.EventHandler
@@ -41,7 +43,9 @@ public class ChestOpenerMod {
 
     public void toggleAutoChestOpen() {
         autoChestOpenEnabled = !autoChestOpenEnabled;
-        mc.thePlayer.addChatMessage(new ChatComponentText("Auto Chest Open: " + (autoChestOpenEnabled ? "Enabled" : "Disabled")));
+        String status = autoChestOpenEnabled ? EnumChatFormatting.GREEN + "Enabled" : EnumChatFormatting.RED + "Disabled";
+        String message = EnumChatFormatting.AQUA + "Auto Chest Open: " + status;
+        mc.thePlayer.addChatMessage(new ChatComponentText(message));
     }
 
     @SideOnly(Side.CLIENT)
@@ -54,8 +58,16 @@ public class ChestOpenerMod {
             if (rayTraceResult != null && rayTraceResult.typeOfHit == MovingObjectType.BLOCK) {
                 BlockPos blockPos = rayTraceResult.getBlockPos();
 
-                if (mc.theWorld.getBlockState(blockPos).getBlock() == Blocks.chest) {
-                    mc.playerController.onPlayerRightClick(mc.thePlayer, mc.theWorld, mc.thePlayer.getHeldItem(), blockPos, rayTraceResult.sideHit, rayTraceResult.hitVec);
+                if (mc.theWorld.getBlockState(blockPos).getBlock() != Blocks.chest) {
+                    cooldownChest = false;
+                }
+
+                if (!cooldownChest) {
+                    if (mc.theWorld.getBlockState(blockPos).getBlock() == Blocks.chest) {
+                        mc.playerController.onPlayerRightClick(mc.thePlayer, mc.theWorld, mc.thePlayer.getHeldItem(), blockPos, rayTraceResult.sideHit, rayTraceResult.hitVec);
+                        cooldownChest = true;
+                    }
+
                 }
             }
         }
