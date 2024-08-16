@@ -3,7 +3,7 @@
     "modid": "chestopener",
     "name": "Chest Opener Mod",
     "description": "Automatically opens chests when you look at them.",
-    "version": "1.0",
+    "version": "1.1",
     "mcversion": "1.8.9",
     "authorList": ["Yilmaz"],
     "credits": "",
