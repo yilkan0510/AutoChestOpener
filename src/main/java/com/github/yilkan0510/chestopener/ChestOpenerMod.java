@@ -100,7 +100,7 @@ public class ChestOpenerMod {
                                     robot.mousePress(InputEvent.BUTTON3_DOWN_MASK);
                                     robot.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
                                 }
-                            }, 100); // 100ms delay
+                            }, 50); // 100ms delay
                         } else {
                             // Simulate right-click action using Robot class
                             robot.mousePress(InputEvent.BUTTON3_DOWN_MASK);
